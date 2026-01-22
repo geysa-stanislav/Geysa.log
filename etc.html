@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Geysa.log — Diário &amp; etc.</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1>Geysa.log</h1>
+      <p class="subtitulo">Offline Mode</p>
+
+      <nav class="principal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="playlist.html">Playlist</a></li>
+          <li><a href="leituras.html">Leituras</a></li>
+          <li><a href="etc.html" aria-current="page">Diário &amp; etc.</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ===== DIÁRIO (posts do dia) ===== -->
+      <section id="diario" class="cat-etc" aria-labelledby="diario-titulo">
+        <h2 id="diario-titulo">Diário</h2>
+
+        <article class="post mood-card" id="mood-do-dia">
+          <header>
+            <h3>Mood do dia</h3>
+            <p class="subtitulo">status do sistema: operacional (por enquanto)</p>
+            <p class="post-meta">
+              <time datetime="2026-01-22">22 jan 2026</time>
+              <span class="badge badge-mood">mood: café e preguiça</span>
+              <span class="badge badge-energy">energia: 40% e caindo...</span>
+              <span class="badge badge-now">now playing: Kashmir</span>
+            </p>
+          </header>
+
+          <p>
+            Atualização curta e objetiva: eu existo, estou hidratada (bati a meta do dia! Viva eu) e tenho uma lista mental de tarefas
+            que eu finjo que não vi.
+          </p>
+
+          <figure class="foto-do-dia">
+            <!-- Troque o src quando quiser colocar uma foto -->
+            <!-- <img src="img/foto-do-dia-2026-01-22.jpg" alt="Foto do dia" /> -->
+            <!-- <figcaption>Legenda da foto (opcional)</figcaption> -->
+          </figure>
+        </article>
+
+        <!-- FEED (poste os logs mais recentes em cima) -->
+        <article class="post diario-entry" id="log-2026-01-22">
+          <header>
+            <h3>Log do dia: preguiça seletiva</h3>
+            <p class="post-meta">
+              <time datetime="2026-01-22">22 jan 2026</time>
+              <span class="badge badge-etc">update</span>
+              <span class="badge badge-tag">tech</span>
+              <span class="badge badge-tag">gym</span>
+            </p>
+          </header>
+
+          <p>
+            Hoje eu fiz um pouquinho do site, fiquei cinco minutos me achando a própria pessoa desenvolvedora, ( Já vou att meu Linkledin com essa info babadeira)
+            e depois fui puxar uns ferros na academia porque, bom eu sou uma quase musculosa (chocados?).
+          </p>
+        </article>
+      </section>
+
+      <!-- ===== ETC ===== -->
+      <section id="etc" class="cat-etc" aria-labelledby="etc-titulo">
+        <h2 id="etc-titulo">Etcetera .</h2>
+
+        <article class="post" id="etc-intro">
+          <header>
+            <h3>Aleatoriedades oficiais</h3>
+            <p class="subtitulo">Links, referências e outras coisas que eu gosto</p>
+          </header>
+
+          <p>
+            Esta aba é meu “bolso” do site: onde eu guardo links úteis, referências, listas e o que mais aparecer.
+          </p>
+        </article>
+      </section>
+
+      <!-- ===== UPDATES ===== -->
+      <section id="updates" class="cat-etc" aria-labelledby="updates-titulo">
+        <h2 id="updates-titulo">Updates</h2>
+
+        <article class="post" id="newsletter">
+          <header>
+            <h3>Todo esse falatório te deixou interessada?</h3>
+          </header>
+
+          <p>Quer receber updates y otras cositas más? Prometo nada. Mas se você deixar seu e-mail, eu posso lembrar que isso existe.</p>
+
+          <form>
+            <label for="nome">Nome:</label>
+            <input id="nome" name="nome" type="text" placeholder="Digite seu nome" autocomplete="name" />
+
+            <label for="email">E-mail:</label>
+            <input id="email" name="email" type="email" placeholder="Digite seu email" autocomplete="email" />
+
+            <button id="botaoEnviar" type="submit">Enviar</button>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Geysa — Meu Cantinho na Internet</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
