@@ -1,0 +1,42 @@
+# Geysa.log — Offline Mode
+
+Este projeto nasceu como um **desafio da PrograMaria**, depois do curso de **Front-End**, com a missão clássica:
+criar minha própria página em **HTML** (e fazer ela sobreviver com **CSS** + um tiquinho de **JS**).
+
+Fiz esse blog “raiz anos 2000” para **melhorar minhas habilidades**, testar organização de conteúdo, navegação entre páginas,
+estilização e pequenos comportamentos com JavaScript (com dignidade variável, porém consistente).
+
+## Site no ar
+- GitHub Pages: https://geysa-stanislav.github.io/blog/
+
+## Preview
+> Para o print funcionar aqui: coloque a imagem no repo em `img/preview-home.png`
+
+![Preview da Home](img/imgpreview-home.png)
+
+## Checklist do que foi feito
+- [x] Estrutura em múltiplas páginas (`index`, `playlist`, `leituras`, `diário & etc.`)
+- [x] Estética “blog raiz anos 2000” (cores roxas/neon + bordas/dotted/dashed)
+- [x] Menu fixo e navegação entre páginas
+- [x] Cards de posts (layout em “painéis”)
+- [x] GIFs animados no tema (welcome / loading / cats / tech vibes)
+- [x] “Mood do dia” na Home puxando o card do Diário via `fetch` + `DOMParser`
+- [x] Seções com identidade visual por tema (música / leituras / etc.)
+- [x] Formulário de updates com validação simples (nome + e-mail)
+
+## Tech stack
+- HTML5
+- CSS3
+- JavaScript
+- Live Server (dev) + GitHub Pages (deploy)
+
+## Rodar localmente
+Você pode abrir o `index.html` direto, mas o ideal é usar Live Server:
+
+1. Abra a pasta do projeto no VS Code
+2. Clique com o botão direito em `index.html`
+3. `Open with Live Server`
+
+## Autor
+Feito por **Geysa** — Offline Mode, online no esforço.
+
