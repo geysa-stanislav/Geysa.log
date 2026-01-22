@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Geysa.log — Home</title>
-    <link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/style.css?v=4" />
+
   </head>
 
   <body>
@@ -14,20 +15,28 @@
       <h1>Geysa.log</h1>
       <p class="subtitulo">Offline Mode</p>
 
-      <nav class="principal" aria-label="Navegação principal">
-        <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="playlist.html">Playlist</a></li>
-          <li><a href="leituras.html">Leituras</a></li>
-          <li><a href="etc.html">Diário &amp; etc.</a></li>
-        </ul>
-      </nav>
+  <nav class="principal" aria-label="Navegação principal">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="playlist.html">Playlist</a></li>
+    <li><a href="leituras.html">Leituras</a></li>
+
+    <li>
+      <a href="etc.html" aria-current="page">
+        <span class="nav-long">Diário &amp; etc.</span>
+        <span class="nav-short">Diário</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
     </header>
 
     <main>
       <!-- ===== MOOD (teaser na Home) ===== -->
       <section id="mood" class="cat-etc" aria-labelledby="mood-titulo">
-        <h2 id="mood-titulo">Mood do dia</h2>
+        <h3 id="mood-titulo">Mood do dia</h3>
 
         <!-- aqui o JS vai injetar o mood do etc.html -->
         <div id="mood-container"></div>
@@ -51,11 +60,7 @@
             aleatoriedades que aparecem do nada.
           </p>
 
-          <p>
-            Sabe quando você vai conhecer alguém novo ou está numa apresentação e precisa falar um pouquinho sobre você?
-            Tipo um “top 10 coisas que eu gosto”, só que com contexto, comentários desnecessários e um toque de caos?
-            Então: a ideia aqui é mais ou menos essa.
-          </p>
+         
         </article>
       </section>
 

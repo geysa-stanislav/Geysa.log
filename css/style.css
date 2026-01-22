@@ -439,3 +439,206 @@ button:hover{
   font-size: 34px;
   margin: 18px 0 10px;
 }
+/* =========================
+   MOBILE — menu + mood (mais compacto)
+   Cole no FINAL do style.css
+   ========================= */
+
+@media (max-width: 520px){
+
+  /* ===== MENU: tudo em uma linha, bem compacto ===== */
+  .principal{
+    height: auto;
+    padding: 4px 8px;
+  }
+
+  .principal ul{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    line-height: normal;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 4px;
+
+    scrollbar-width: none;
+  }
+  .principal ul::-webkit-scrollbar{ display:none; }
+
+  .principal li{
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .principal a{
+    display: inline-block;
+    padding: 8px 4px;
+    font-size: 13px;          /* BEM menor */
+    letter-spacing: 0;
+    text-decoration-thickness: 1px;
+  }
+
+  /* (opcional) deixa o texto menos “largo” */
+  .principal a{ font-weight: 600; }
+
+  /* ===== HOME: Mood do dia menor ===== */
+  #mood h2{
+    font-size: 22px;
+    margin: 12px 0 8px;
+  }
+
+  #mood-container .mood-mini{
+    max-width: 94vw;
+    padding: 8px 8px;
+    border-radius: 14px;
+  }
+
+  #mood-container .mood-mini .subtitulo{
+    font-size: 12px;
+    margin: 0 0 6px;
+  }
+
+  #mood-container .mood-mini .post-meta{
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  #mood-container .mood-mini .badge{
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  /* Se ainda ficar grande: esconde a data no mobile */
+  #mood-container .mood-mini time{
+    display: none;
+  }
+}
+@media (max-width: 520px){
+  .principal ul{ width: 100%; }
+}
+/* ===== Mobile: menu não quebra + texto curto ===== */
+.nav-short{ display:none; }
+
+@media (max-width: 520px){
+
+  .principal{ height:auto !important; padding: 4px 8px !important; }
+
+  .principal ul{
+    display:flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
+  }
+
+  .principal li{ margin: 0 !important; display:block !important; }
+
+  .principal a{
+    padding: 8px 4px !important;
+    font-size: 13px !important;
+  }
+
+  .nav-long{ display:none; }
+  .nav-short{ display:inline; }
+
+  /* ===== Mood menor no mobile ===== */
+  #mood h2{
+    font-size: 22px !important;
+    margin: 10px 0 8px !important;
+  }
+
+  #mood-container .mood-mini{
+    max-width: 92vw !important;
+    padding: 8px 10px !important;
+  }
+
+  #mood-container .mood-mini .subtitulo{
+    font-size: 12px !important;
+    margin: 0 0 6px !important;
+  }
+
+  #mood-container .mood-mini .post-meta{
+    font-size: 10px !important;
+    gap: 5px !important;
+  }
+
+  #mood-container .mood-mini .badge{
+    font-size: 9px !important;
+    padding: 1px 6px !important;
+  }
+
+  #mood-container .mood-mini time{ display:none !important; }
+}
+ /* === Fix: Mostrar texto curto no menu mobile === */
+.nav-short { display: none; }
+
+@media (max-width: 520px) {
+  .nav-long { display: none !important; }
+  .nav-short { display: inline !important; }
+}
+
+/* === Fix: Mood do dia menor no mobile === */
+@media (max-width: 520px) {
+  .mood-card {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .mood-card h3 {
+    font-size: 18px;
+  }
+
+  .mood-card .subtitulo {
+    font-size: 13px;
+  }
+
+  .mood-card .post-meta {
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .mood-card .badge {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+}
+/* Ajustar largura da seção Mood para combinar com o layout principal */
+#mood {
+  max-width: 980px;
+  width: 92%;
+  margin: 0 auto;
+}
+/* === Ajuste de largura para Mood do dia === */
+#mood {
+  max-width: 980px;
+  width: 92%;
+  margin: 0 auto;
+}
+/* Harmonizar largura da seção Mood */
+#mood {
+  display: flex;
+  justify-content: center;
+}
+
+#mood-container {
+  width: 100%;
+  max-width: 620px; /* largura bonita e proporcional */
+}
+#mood h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+.mood-card {
+  padding: 12px 16px;
+  border-width: 2px;
+}
