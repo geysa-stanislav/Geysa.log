@@ -43,7 +43,6 @@ body{
   color: var(--text);
 }
 
-/* Evita imagem estourando (e não força 100% sempre) */
 img{
   max-width: 100%;
   height: auto;
@@ -100,7 +99,7 @@ a:hover{
   text-decoration: underline;
 }
 
-/* ===== Largura / layout (para não ficar estreito demais) ===== */
+/* ===== Layout ===== */
 .site-header,
 main{
   width: min(980px, 92%);
@@ -121,28 +120,57 @@ section{
   border-radius: 18px;
 }
 
+/* ===== STATUS NEON (NOVO!) ===== */
+/* Cria a animação de piscar */
+@keyframes neon-blink {
+  0%, 100% { 
+    opacity: 1; 
+    text-shadow: 0 0 5px var(--terminal), 0 0 10px var(--terminal), 0 0 20px var(--terminal);
+  }
+  50% { 
+    opacity: 0.7; 
+    text-shadow: 0 0 2px var(--terminal), 0 0 5px var(--terminal);
+  }
+}
+
+/* Aplica a animação no subtítulo do card de Status */
 .subtitulo{
   color: var(--muted);
   font-style: italic;
   margin: 0 0 12px;
 }
 
-/* ===== Menu (anos 2000: barra rosa + links) ===== */
+/* Especificamente dentro do container de mood (Home) ou card (Etc) */
+#mood-container .subtitulo, 
+#mood-do-dia .subtitulo {
+  color: var(--terminal); /* Cor verde neon */
+  font-family: "Courier New", Courier, monospace; /* Fonte mais 'hacker' */
+  font-weight: bold;
+  animation: neon-blink 1.5s infinite alternate; /* Pisca infinitamente */
+}
+
+/* ===== Menu (CORRIGIDO ALINHAMENTO) ===== */
 .principal{
   background: var(--pink);
-  height: 44px;
+  height: 44px; /* Altura fixa no desktop */
   width: min(980px, 92%);
   margin: 14px auto 0;
   border-radius: 10px;
   box-shadow: var(--shadow);
   border: 2px solid rgba(255,255,255,0.20);
+  
+  /* Flexbox para centralizar tudo verticalmente */
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
 }
 
 .principal ul{
   list-style: none;
   padding-left: 0;
   margin: 0;
-  line-height: 44px;
+  display: flex; /* Flex também na lista */
+  align-items: center;
 }
 
 .principal li{
@@ -152,9 +180,21 @@ section{
 
 .principal a{
   color: white;
-  text-decoration: underline;
+  text-decoration: none; /* Remove sublinhado padrão */
   font-weight: 600;
+  
+  /* TRUQUE PARA ALINHAR O RISCO: */
+  display: inline-flex; /* Faz o link se comportar como uma caixinha flex */
+  align-items: center;  /* Centraliza o texto/span dentro do link */
+  vertical-align: middle;
+  height: 30px; /* Altura consistente para o hover/border */
+  line-height: 1; /* Reseta altura de linha para não bugar */
 }
+
+.principal a:hover {
+  text-decoration: underline;
+}
+
 .principal a[aria-current="page"]{
   text-decoration: none;
   border-bottom: 2px solid rgba(255,255,255,0.85);
@@ -172,13 +212,9 @@ section{
   margin: 14px 0;
 }
 
-.post header{
-  margin-bottom: 10px;
-}
+.post header{ margin-bottom: 10px; }
 
-.post-cta{
-  margin-top: 12px;
-}
+.post-cta{ margin-top: 12px; }
 .post-cta a{
   display: inline-block;
   padding: 8px 12px;
@@ -186,18 +222,13 @@ section{
   background: rgba(255,79,216,0.18);
   border: 2px outset rgba(255,255,255,0.20);
 }
-.post-cta a:hover{
-  background: rgba(125,249,255,0.18);
-}
+.post-cta a:hover{ background: rgba(125,249,255,0.18); }
 
-/* ===== Seções por cor (Paleta A) ===== */
-/* Música — vermelho */
+/* ===== Cores por seção ===== */
 .cat-music h2{ color: #ffd6df; }
 .cat-music .post{ border-color: rgba(255,45,85,0.55); }
 .cat-music a{ color: var(--music); }
-.cat-music a:hover{ color: var(--cyan); }
 
-/* Leituras — papel + café */
 .cat-reading h2{ color: var(--coffee); }
 .cat-reading .post{
   background: rgba(247,241,225,0.94);
@@ -206,13 +237,10 @@ section{
 }
 .cat-reading .subtitulo{ color: rgba(26,20,38,0.70); }
 .cat-reading a{ color: #7a2d1b; }
-.cat-reading a:hover{ color: #000; }
 
-/* Etc — azul */
 .cat-etc h2{ color: #d9fbff; }
 .cat-etc .post{ border-color: rgba(78,220,255,0.55); }
 .cat-etc a{ color: var(--etcblue); }
-.cat-etc a:hover{ color: var(--terminal); }
 
 /* ===== GIFs ===== */
 .gif-welcome, .gif-tech, .gif-playlist, .gif-artist, .head-bop-good-vibes {
@@ -223,16 +251,14 @@ section{
   border-radius: 14px;
   box-shadow: 0 12px 26px rgba(0,0,0,0.35);
 }
-
 .gif-welcome{ width: min(360px, 100%); border: 2px dotted rgba(255,255,255,0.22); }
 .gif-tech{ width: min(280px, 100%); border: 2px dashed rgba(0,255,154,0.35); }
 .gif-playlist, .gif-artist, .head-bop-good-vibes { width: min(460px, 100%); border: 2px solid rgba(125,249,255,0.25); }
 
-/* Divider */
 .gif-divider{ text-align: center; margin: 14px 0 18px; }
 .gif-divider img{ width: min(420px, 100%); opacity: 0.9; }
 
-/* ===== Formulário / botão ===== */
+/* ===== UI Elements ===== */
 button{
   background-color: #41f341;
   border: 1px solid transparent;
@@ -242,7 +268,6 @@ button{
 }
 button:hover{ filter: brightness(0.95); }
 
-/* ===== Spotify embeds ===== */
 .spotify-embed{
   display: block;
   width: 100%;
@@ -252,7 +277,6 @@ button:hover{ filter: brightness(0.95); }
   box-shadow: 0 12px 26px rgba(0,0,0,0.35);
 }
 
-/* ===== Now playing ===== */
 .now-playing{
   margin-top: 12px;
   padding: 10px 12px;
@@ -263,10 +287,6 @@ button:hover{ filter: brightness(0.95); }
 }
 .now-playing .np-title{ margin: 0 0 4px; font-size: 14px; color: var(--text); }
 .now-playing .np-meta{ margin: 0; font-size: 13px; color: var(--muted); }
-
-/* =========================
-   Diário & etc. (Badges e Metas)
-   ========================= */
 
 .post-meta{
   margin: 6px 0 0;
@@ -308,38 +328,21 @@ button:hover{ filter: brightness(0.95); }
   margin: 0 auto;
   border-radius: 12px;
   border: 2px solid rgba(125,249,255,0.25);
-  box-shadow: 0 12px 26px rgba(0,0,0,0.35);
 }
 .foto-do-dia figcaption{
   margin-top: 8px;
   font-size: 14px;
   color: var(--muted);
   font-style: italic;
-  text-align: center;
 }
 
-/* =========================
-   HOME — Mood teaser (Ajustado)
-   ========================= */
+/* ===== HOME - MOOD (Full Width) ===== */
+#mood-titulo { font-size: 24px; margin-top: 20px; margin-bottom: 10px; text-align: center; }
+#mood { width: min(980px, 92%); margin: 0 auto; }
 
-/* Título menor na Home */
-#mood-titulo {
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Ajuste da largura da seção mood na Home */
-#mood {
-  width: min(980px, 92%); /* Segue a mesma largura do Header/Main */
-  margin: 0 auto;
-}
-
-/* Card Mood na home (agora full width) */
 #mood-container .mood-mini{
   width: 100%;
-  max-width: 100%; /* Remove a restrição de largura anterior */
+  max-width: 100%;
   margin: 10px auto 20px;
   padding: 16px;
   box-sizing: border-box;
@@ -347,13 +350,12 @@ button:hover{ filter: brightness(0.95); }
 
 #mood-container .mood-mini h3,
 #mood-container .mood-mini > p,
-#mood-container .mood-mini .foto-do-dia {
-  display: none;
-}
+#mood-container .mood-mini .foto-do-dia { display: none; }
 
 #mood-container .mood-mini .subtitulo{
   font-size: 14px;
   margin: 0 0 10px;
+  /* Herda o neon definido lá em cima */
 }
 
 #mood-container .mood-mini .post-meta{
@@ -365,84 +367,70 @@ button:hover{ filter: brightness(0.95); }
   margin: 0;
 }
 
-#mood-container .mood-mini .badge{
-  font-size: 11px;
-  padding: 1px 7px;
-  white-space: nowrap;
-}
+#mood-container .mood-mini .badge{ font-size: 11px; padding: 1px 7px; white-space: nowrap; }
 
-/* Controle de exibição do texto do menu */
 .nav-short { display: none; }
 
-/* =========================
-   MOBILE — Media Queries unificadas
-   ========================= */
-
+/* ===== MOBILE ===== */
 @media (max-width: 520px){
-
-  /* ===== MENU MOBILE: Faixa rosa ajustada ===== */
   .principal{
     height: auto !important;
     padding: 8px 4px !important;
-    display: flex;
-    justify-content: center;
   }
-
   .principal ul{
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important; /* Espaço reduzido entre itens */
-    
+    gap: 8px !important;
     width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: normal !important;
-    overflow-x: hidden; /* Evita scroll lateral se possível */
+    justify-content: center !important;
   }
-
   .principal li{
     margin: 0 !important;
-    display: block !important;
     flex: 0 0 auto;
   }
-
   .principal a{
-    display: inline-block;
-    padding: 6px 4px !important; /* Padding menor */
-    font-size: 13px !important;  /* Fonte menor */
-    font-weight: 600;
+    padding: 6px 4px !important;
+    font-size: 13px !important;
     white-space: nowrap;
-    letter-spacing: -0.3px; /* Aperta levemente as letras */
+    letter-spacing: -0.3px;
+    height: auto !important; /* Altura auto no mobile para caber padding */
   }
-
-  /* Troca texto longo por curto */
+  
   .nav-long { display: none !important; }
   .nav-short { display: inline !important; }
 
-  /* ===== MOOD MOBILE ===== */
-  #mood-titulo{
-    font-size: 20px !important; /* Ainda menor no celular */
-    margin: 10px 0 8px !important;
-  }
+  #mood-titulo{ font-size: 20px !important; margin: 10px 0 8px !important; }
+  #mood-container .mood-mini{ padding: 10px 12px !important; }
+  #mood-container .mood-mini .subtitulo{ font-size: 12px !important; }
+  #mood-container .mood-mini .post-meta{ font-size: 10px !important; }
+}
+/* --- GERAL --- */
+body {
+    font-family: Arial, sans-serif; /* Sua fonte padrão do site */
+}
 
-  #mood-container .mood-mini{
-    padding: 10px 12px !important;
-  }
+/* --- LINKS (RESOLVENDO O DIÁRIO) --- */
+/* Isso garante que TODOS os links fiquem sem o risco, mesmo os já clicados */
+a, a:visited, a:hover, a:active {
+    text-decoration: none; 
+    color: inherit; /* Mantém a cor original do texto, ou coloque uma cor específica aqui */
+    cursor: pointer;
+}
 
-  #mood-container .mood-mini .subtitulo{
-    font-size: 12px !important;
-    margin: 0 0 6px !important;
-  }
+/* --- MOOD DO DIA (ESTILO MÁQUINA DE ESCREVER) --- */
+.mood {
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo máquina/código */
+    font-style: italic;  /* Deixa a letra "caída" */
+    font-weight: normal; /* Tira o negrito se tiver */
+    font-size: 1.1em;    /* Um pouquinho maior para ler melhor */
+}
 
-  #mood-container .mood-mini .post-meta{
-    font-size: 10px !important;
-    gap: 5px !important;
-  }
+/* --- EFEITO PISCAR (CURSOR) --- */
+/* Use essa classe no tracinho | que fica piscando */
+.cursor-piscar {
+    animation: piscar 1s infinite step-end;
+    font-weight: bold;
+}
 
-  #mood-container .mood-mini .badge{
-    font-size: 9px !important;
-    padding: 1px 6px !important;
-  }
+@keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
