@@ -51,4 +51,44 @@ async function carregarMoodDoDia() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", carregarMoodDoDia);
+document.addEventListener("DOMContentLoaded", () => {
+  carregarMoodDoDia();
+  carregarRecentPosts();
+});
+
+async function carregarRecentPosts() {
+  const list = document.getElementById("recent-posts");
+  if (!list) return; // só roda onde existir
+
+  try {
+    const resp = await fetch("etc.html");
+    if (!resp.ok) throw new Error("Não consegui carregar etc.html");
+
+    const html = await resp.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+
+    const entries = [...doc.querySelectorAll(".diario-entry")];
+    if (!entries.length) {
+      list.innerHTML = "<li>Sem posts ainda.</li>";
+      return;
+    }
+
+    const items = entries.slice(0, 8).map((entry) => {
+      const id = entry.id || "";
+      const titulo = entry.querySelector("h3")?.textContent?.trim() || "Post";
+      const data = entry.querySelector("time")?.textContent?.trim() || "";
+
+      return `
+        <li>
+          <a href="etc.html#${id}">${titulo}</a>
+          <span class="mini-date">${data}</span>
+        </li>
+      `;
+    });
+
+    list.innerHTML = items.join("");
+  } catch (err) {
+    list.innerHTML = "<li>Não consegui carregar os posts.</li>";
+    console.error(err);
+  }
+}

@@ -434,3 +434,235 @@ a, a:visited, a:hover, a:active {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+/* =========================
+   BADGES NEON (piscando)
+   Cole no FINAL do CSS
+   ========================= */
+
+:root{
+  --neon-pink: #ff4fd8;
+  --neon-cyan: #7df9ff;
+  --neon-green: #00ff9a;
+  --neon-red: #ff2d55;
+  --neon-purple: #b388ff;
+}
+
+/* base neon pra todas */
+.badge{
+  background: rgba(0,0,0,.45);
+  color: #f2efff;
+  border: 1px solid rgba(255,255,255,.18);
+
+  /* glow */
+  box-shadow:
+    0 0 10px rgba(125,249,255,.25),
+    0 0 18px rgba(255,79,216,.18);
+
+  /* “pixel vibe” */
+  letter-spacing: .2px;
+  text-shadow: 0 0 6px rgba(255,255,255,.22);
+}
+
+/* cada tipo com cor neon + brilho */
+.badge-mood{
+  border-color: rgba(0,255,154,.55);
+  box-shadow:
+    0 0 10px rgba(0,255,154,.35),
+    0 0 22px rgba(0,255,154,.18);
+}
+
+.badge-energy{
+  border-color: rgba(125,249,255,.55);
+  box-shadow:
+    0 0 10px rgba(125,249,255,.35),
+    0 0 22px rgba(125,249,255,.18);
+}
+
+.badge-now{
+  border-color: rgba(255,45,85,.55);
+  box-shadow:
+    0 0 10px rgba(255,45,85,.35),
+    0 0 22px rgba(255,45,85,.18);
+}
+
+.badge-tag{
+  border-color: rgba(255,79,216,.55);
+  box-shadow:
+    0 0 10px rgba(255,79,216,.35),
+    0 0 22px rgba(255,79,216,.18);
+}
+
+.badge-etc{
+  border-color: rgba(78,220,255,.55);
+  box-shadow:
+    0 0 10px rgba(78,220,255,.35),
+    0 0 22px rgba(78,220,255,.18);
+}
+
+/* animação: pisca suave + pulsar no glow */
+@keyframes neonPulse {
+  0%, 100% {
+    filter: brightness(1);
+    transform: translateZ(0);
+  }
+  50% {
+    filter: brightness(1.35);
+  }
+}
+@keyframes neonFlicker {
+  0% { opacity: 1; }
+  6% { opacity: .85; }
+  7% { opacity: 1; }
+  60% { opacity: 1; }
+  61% { opacity: .8; }
+  62% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* liga o “pisca cool” */
+.badge{
+  animation: neonPulse 1.6s ease-in-out infinite;
+}
+
+/* dá um “flicker” diferente por tipo (menos repetitivo) */
+.badge-mood{ animation: neonPulse 1.5s ease-in-out infinite, neonFlicker 5.5s linear infinite; }
+.badge-energy{ animation: neonPulse 1.7s ease-in-out infinite, neonFlicker 6.2s linear infinite; }
+.badge-now{ animation: neonPulse 1.4s ease-in-out infinite, neonFlicker 4.8s linear infinite; }
+.badge-tag{ animation: neonPulse 1.8s ease-in-out infinite, neonFlicker 6.8s linear infinite; }
+.badge-etc{ animation: neonPulse 1.6s ease-in-out infinite, neonFlicker 7.1s linear infinite; }
+
+/* hover: “acende” mais */
+.badge:hover{
+  filter: brightness(1.6);
+  box-shadow:
+    0 0 12px rgba(255,255,255,.25),
+    0 0 26px rgba(125,249,255,.35),
+    0 0 30px rgba(255,79,216,.25);
+}
+
+/* acessibilidade: respeita quem desliga animação */
+@media (prefers-reduced-motion: reduce){
+  .badge{ animation: none !important; }
+}
+/* ===== Layout com lateral (estilo pin: feed + sidebar) ===== */
+.page{
+  width: min(1100px, 92%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.content{ min-width: 0; } /* evita overflow */
+.sidebar{
+  position: sticky;
+  top: 16px;
+  align-self: start;
+}
+
+/* widgets da lateral */
+.widget{
+  text-align: left;
+  padding: 14px 14px;
+  background: var(--panel2);
+  border: 2px dotted rgba(255,79,216,0.35);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+}
+
+.widget h3{
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.mini-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mini-list li{
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+}
+.mini-list li:last-child{ border-bottom: 0; }
+
+.mini-list a{
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+.mini-list a:hover{
+  color: var(--terminal);
+  text-decoration: underline;
+}
+
+.mini-date{
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mini-cta{
+  margin: 10px 0 0;
+}
+.mini-cta a{
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(255,79,216,0.14);
+  border: 2px outset rgba(255,255,255,0.16);
+}
+
+/* tag cloud */
+.tag-cloud{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Responsivo: no celular vira 1 coluna */
+@media (max-width: 900px){
+  .page{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{
+    position: static;
+  }
+}
+/* ===== Layout com sidebar: não limitar a largura do <main> dentro do grid ===== */
+.page > .content{
+  width: 100%;
+  margin: 0;
+}
+/* =========================
+   FIX: alinhamento geral (header + grid + footer)
+   Cole no FINAL do CSS
+   ========================= */
+
+/* deixa header, grid e footer com a MESMA largura */
+.site-header,
+.page,
+.site-footer,
+body > main{
+  width: min(1100px, 92%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* a barra rosa ocupa 100% do header (para alinhar certinho) */
+.principal{
+  width: 100%;
+}
+
+/* mood não fica com largura “diferente” do resto */
+#mood{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}

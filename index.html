@@ -17,12 +17,12 @@
 
   <nav class="principal" aria-label="Navegação principal">
   <ul>
-    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="playlist.html">Playlist</a></li>
     <li><a href="leituras.html">Leituras</a></li>
 
     <li>
-      <a href="etc.html" aria-current="page">
+      <a href="etc.html">
         <span class="nav-long">Diário &amp; etc.</span>
         <span class="nav-short">Diário</span>
       </a>
@@ -32,8 +32,8 @@
 
 
     </header>
-
-    <main>
+    <div class="page">
+  <main class="content">
       <!-- ===== MOOD (teaser na Home) ===== -->
       <section id="mood" class="cat-etc" aria-labelledby="mood-titulo">
         <h3 id="mood-titulo">Mood do dia</h3>
@@ -212,7 +212,38 @@
           </p>
         </article>
       </section>
-    </main>
+      </main>
+
+  <aside class="sidebar" aria-label="Lateral do blog">
+    <section class="widget">
+      <h3>Posts anteriores</h3>
+      <ul id="recent-posts" class="mini-list">
+        <li>carregando...</li>
+      </ul>
+      <p class="mini-cta"><a href="etc.html#diario">ver diário completo →</a></p>
+    </section>
+
+    <section class="widget">
+      <h3>Tag cloud</h3>
+      <div class="tag-cloud">
+        <a class="badge badge-tag" href="etc.html#diario">updates</a>
+        <a class="badge badge-tag" href="etc.html#diario">tech</a>
+        <a class="badge badge-tag" href="etc.html#diario">gym</a>
+        <a class="badge badge-tag" href="playlist.html">músicas</a>
+        <a class="badge badge-tag" href="leituras.html">leituras</a>
+      </div>
+    </section>
+
+    <section class="widget">
+      <h3>Atalhos</h3>
+      <ul class="mini-list">
+        <li><a href="playlist.html">Playlist</a></li>
+        <li><a href="leituras.html">Leituras</a></li>
+        <li><a href="etc.html">Diário &amp; etc.</a></li>
+      </ul>
+    </section>
+  </aside>
+</div>
 
     <footer class="site-footer">
       <p>© Geysa — Meu Cantinho na Internet</p>
