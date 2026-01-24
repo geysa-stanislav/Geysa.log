@@ -13,22 +13,18 @@
       <img class="gif-welcome" src="gifs/welcome.gif" alt="Welcome!" />
 
       <h1>Geysa.log</h1>
-      <p class="subtitulo">Offline Mode</p>
+      <p class="subtitulo neon neon-cyan neon-anim">Offline Mode</p>
 
-  <nav class="principal" aria-label="Navegação principal">
+ <nav class="principal" aria-label="Navegação principal">
   <ul>
-    <li><a href="index.html" aria-current="page">Home</a></li>
-    <li><a href="playlist.html">Playlist</a></li>
-    <li><a href="leituras.html">Leituras</a></li>
-
-    <li>
-      <a href="etc.html">
-        <span class="nav-long">Diário &amp; etc.</span>
-        <span class="nav-short">Diário</span>
-      </a>
-    </li>
+    <li><a href="./">Home</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="consumos-culturais.html">Consumos Culturais</a></li>
+    <li><a href="etc.html">Etc e tal</a></li>
   </ul>
 </nav>
+
+
 
 
     </header>
@@ -36,7 +32,7 @@
   <main class="content">
       <!-- ===== MOOD (teaser na Home) ===== -->
       <section id="mood" class="cat-etc" aria-labelledby="mood-titulo">
-        <h3 id="mood-titulo">Mood do dia</h3>
+        <h3 class="neon neon-cyan" id="mood-titulo">Mood do dia</h3>
 
         <!-- aqui o JS vai injetar o mood do etc.html -->
         <div id="mood-container"></div>
@@ -208,7 +204,26 @@
           </p>
 
           <p class="post-cta">
-            <a href="playlist.html#playlist-intro">Continuar na Playlist →</a>
+            <a href="musica.html">Continuar na Música →</a>
+          </p>
+        </article>
+      </section>
+      <!-- ===== LEITURAS (teaser na Home) ===== -->
+       <section id="livros" aria-labelledby="livros-titulo">
+        <h2 id="livros-titulo">Leituras</h2>
+
+        <article class="post" id="leituras-placeholder">
+          <header>
+            <h3>Resenhas do momento</h3>
+            <p class="subtitulo">Indicações, surtos e favoritismos completamente imparciais ( será?)</p>
+          </header>
+
+          <p>
+            Recomendações de livros, opiniões com pouco senso crítico  e um índice de
+            “me marcou” totalmente questionável.
+          </p>
+          <p class="post-cta">
+            <a href="consumos-culturais.html">Continuar na Consumos Culturais →</a>
           </p>
         </article>
       </section>

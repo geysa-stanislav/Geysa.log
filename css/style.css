@@ -666,3 +666,138 @@ body > main{
   margin-left: 0;
   margin-right: 0;
 }
+/* ===== Neon utilities (cole no FINAL do CSS) ===== */
+.neon{
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-shadow: 0 0 8px rgba(255,255,255,.10);
+}
+
+.neon-green{
+  color: var(--terminal);
+  text-shadow:
+    0 0 6px rgba(0,255,154,.45),
+    0 0 14px rgba(0,255,154,.25),
+    0 0 28px rgba(0,255,154,.18);
+}
+
+.neon-cyan{
+  color: var(--cyan);
+  text-shadow:
+    0 0 6px rgba(125,249,255,.45),
+    0 0 14px rgba(125,249,255,.25),
+    0 0 28px rgba(125,249,255,.18);
+}
+
+.neon-pink{
+  color: var(--pink);
+  text-shadow:
+    0 0 6px rgba(255,79,216,.45),
+    0 0 14px rgba(255,79,216,.25),
+    0 0 28px rgba(255,79,216,.18);
+}
+
+/* pisca/pulsa */
+@keyframes neonPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+
+@keyframes neonFlicker {
+  0% { opacity: 1; }
+  6% { opacity: .85; }
+  7% { opacity: 1; }
+  60% { opacity: 1; }
+  61% { opacity: .8; }
+  62% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.neon-anim{
+  animation: neonPulse 1.6s ease-in-out infinite, neonFlicker 6.5s linear infinite;
+}
+
+/* “neon andando” (efeito varredura) */
+@keyframes neonScan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.neon-scan{
+  background: linear-gradient(90deg, rgba(0,255,154,1), rgba(125,249,255,1), rgba(255,79,216,1));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: neonScan 2.4s linear infinite;
+  text-shadow: none; /* o gradiente já “brilha” */
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  .neon-anim, .neon-scan { animation: none !important; }
+}
+/* ===== Neon reutilizável (classes) ===== */
+
+/* animação (a mesma lógica do seu neon-blink) */
+@keyframes neon-blink {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  50% {
+    opacity: .7;
+    text-shadow: 0 0 2px currentColor, 0 0 5px currentColor;
+  }
+}
+
+/* base neon (fonte/estilo “hacker”) */
+.neon {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+}
+
+/* liga o blink */
+.neon-blink {
+  animation: neon-blink 1.5s infinite alternate;
+}
+
+/* cores neon */
+.neon-green { color: var(--terminal); }   /* verde */
+.neon-blue  { color: var(--etcblue); }    /* azul */
+.neon-purple{ color: #b388ff; }           /* roxo (pode ajustar) */
+.neon-red   { color: var(--music); }      /* vermelho */
+
+/* opcional: versões mais “fortes” (mais glow) */
+.neon-strong {
+  text-shadow: 0 0 6px currentColor, 0 0 14px currentColor, 0 0 26px currentColor;
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  .neon-blink { animation: none !important; }
+}
+@keyframes neon-blink {
+  0%, 100% { 
+    opacity: 1;
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  50% {
+    opacity: .7;
+    text-shadow: 0 0 2px currentColor, 0 0 5px currentColor;
+  }
+}
+
+.neon {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+}
+
+.neon-blink {
+  animation: neon-blink 1.5s infinite alternate;
+}
+
+.neon-green  { color: var(--terminal); }
+.neon-blue   { color: var(--etcblue); }
+.neon-purple { color: #b388ff; }
+.neon-red    { color: var(--music); }

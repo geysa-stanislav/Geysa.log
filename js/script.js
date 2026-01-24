@@ -51,10 +51,44 @@ async function carregarMoodDoDia() {
   }
 }
 
+function marcarMenuAtivo() {
+  const nav = document.querySelector("nav.principal");
+  if (!nav) return;
+
+  const links = nav.querySelectorAll("a");
+  if (!links.length) return;
+
+  // Ex: "", "index.html", "musica.html", etc.html...
+  let atual = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+  // Se a pessoa acessou com / (sem arquivo) ou /index.html, consideramos Home
+  if (atual === "" || atual === "index.html") atual = "home";
+
+  links.forEach((a) => {
+    a.removeAttribute("aria-current");
+
+    let href = (a.getAttribute("href") || "").split("#")[0].toLowerCase();
+
+    // Normaliza Home: "./" ou "/" ou "" ou "index.html"
+    const ehHome =
+      href === "./" || href === "/" || href === "" || href.endsWith("/") || href.endsWith("index.html");
+
+    const alvo = ehHome ? "home" : href;
+
+    if (alvo === atual) {
+      a.setAttribute("aria-current", "page");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  carregarMoodDoDia();
-  carregarRecentPosts();
+  marcarMenuAtivo();
+
+  // mantém o que você já tinha:
+  carregarMoodDoDia?.();
+  carregarRecentPosts?.();
 });
+
 
 async function carregarRecentPosts() {
   const list = document.getElementById("recent-posts");
@@ -92,3 +126,4 @@ async function carregarRecentPosts() {
     console.error(err);
   }
 }
+
